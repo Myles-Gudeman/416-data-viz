@@ -31,11 +31,24 @@
 
 <h1>Why can't Millenials afford to buy a house?</h1>
 
-<p>A common claim these days is that due to aggressive real estate investing from older generations, Millenials are now priced out of the housing market and cannot afford to purchase. This locks them into a permanent renting situation in which wealth is consistently siphoned out of our generation and into older generations who now own these properties. While there has been a distinct increase in sentiment towards real estate as a form of investment which causes a housing market price increase, many people within such generations claim that the reason millenials can't afford housing is their spending habits. This journey aims to analyze generational spending habits and compare the differences in 'frivilous' spending vs. spending necessary in todays society. </p>
 
-<h2>Instructions:</h2>
+<p>A common claim these days is that due to aggressive real estate investing from older generations, Millenials are now priced out of the housing market and cannot afford to purchase. This locks them into a permanent renting situation in which wealth is consistently siphoned out of our generation and into older generations who now own these properties. While there has been a distinct increase in sentiment towards real estate as a form of investment which causes a housing market price increase, many people within such generations claim that the reason millenials can't afford housing is their spending habits. This journey aims to analyze generational spending habits and compare the differences in non-essential spending vs. essential spending in todays society. </p>
 
-<p>Type Here. 
+<h2>Categories:</h2>
+
+<p>Restuarants: This includes expenditure on dine-in eating, as well as delivery/carryout expenses. 
+</p>
+<p>Groceries: Any food purchased from a grocer, this includes delivery expenses if you deliver your groceries instead of shop for them yourself. 
+</p>
+<p>Gas: Any gas expenses, this does NOT include expenses for maintenence of your car or the car itself. 
+</p>
+<p>Pharmacies: Any expenses on over the counter or prescription medication, including by mail. 
+</p>
+<p>Building/Furniture: Any expenses related to rent, home maintenence, property tax, furniture, etc. 
+</p>
+<p>Electronics/Hobbies/Clothing: This is any electronics, hobby items, or clothing. Including phone, phone bill, and digital subscription services like Netflix. 
+</p>
+<p>Misc.: Anything that does not fall into the above categories. 
 </p>
 
 
@@ -62,13 +75,13 @@ var svg = d3.select("#my_dataviz")
 var Overview 	= {restuarants: 17.0, groceries: 26.2, gas:8.9, pharmacies:4.0, furniture_building:7.8, elec_hobbies_clothing:15.5, general_misc:20.7, tooltip:"Overview",
 info1: "This is the average", info2: "spending across every", info3: "generation from 1925 to", info4: "the late 90's"}
 var Millenials  = {restuarants: 23.8, groceries: 21.7, gas:10.8,pharmacies:3.0, furniture_building:4.5, elec_hobbies_clothing:18.5, general_misc:17.7, tooltip:"Millenials",
-info1: "Millenials spend the", info2: "most on gas, eating out, ", info3: "and the hobbies/etc. sector", info4: "These are all non essential sections"}
+info1: "Millenials spend the", info2: "most on gas, eating out, ", info3: "and the hobbies/etc. sector", info4: "All of which are non essential."}
 var Genx 		= {restuarants: 17.7, groceries: 25.3, gas:9.7, pharmacies:2.9, furniture_building:7.3, elec_hobbies_clothing:16.8, general_misc:20.3, tooltip:"Gen X",
-info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
+info1: "Gen X are also guilty", info2: "of increased non-essential", info3: "spending, but to a lesser", info4: "degree than millenials."}
 var BB 			= {restuarants: 13.5, groceries: 27.2, gas:8.5, pharmacies:3.7, furniture_building:10.0, elec_hobbies_clothing:14.7, general_misc:22.3, tooltip:"Baby Boomers",
-info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
+info1: "Boomers start to see", info2: "increases in grocery and", info3: "house expenditures. Which ", info4: "lines up with their age."}
 var Trad 		= {restuarants: 12.8, groceries: 30.4, gas:6.7, pharmacies:6.4, furniture_building:9.4, elec_hobbies_clothing:11.8, general_misc:22.5, tooltip:"Traditionalists",
-info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
+info1: "Traditionalists in their", info2: "old age spend the most", info3: "on pharmacy and groceries", info4: "which makes sense for retirees"}
 
 // set the color scale
 var color = d3.scaleOrdinal()
