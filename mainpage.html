@@ -59,11 +59,16 @@ var svg = d3.select("#my_dataviz")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 // Data taken from: https://data.world/carmichael/consumer-spending/workspace/file?agentid=makeovermonday&datasetid=2019w13&filename=Consumer+Spending+by+Generation.csv
-var Overview 	= {restuarants: 17.0, groceries: 26.2, gas:8.9, pharmacies:4.0, furniture_building:7.8, elec_hobbies_clothing:15.5, general_misc:20.7, tooltip:"Overview"}
-var Millenials  = {restuarants: 23.8, groceries: 21.7, gas:10.8,pharmacies:3.0, furniture_building:4.5, elec_hobbies_clothing:18.5, general_misc:17.7, tooltip:"Millenials"}
-var Genx 		= {restuarants: 17.7, groceries: 25.3, gas:9.7, pharmacies:2.9, furniture_building:7.3, elec_hobbies_clothing:16.8, general_misc:20.3, tooltip:"Gen X"}
-var BB 			= {restuarants: 13.5, groceries: 27.2, gas:8.5, pharmacies:3.7, furniture_building:10.0, elec_hobbies_clothing:14.7, general_misc:22.3, tooltip:"Baby Boomers"}
-var Trad 		= {restuarants: 12.8, groceries: 30.4, gas:6.7, pharmacies:6.4, furniture_building:9.4, elec_hobbies_clothing:11.8, general_misc:22.5, tooltip:"Traditionalists"}
+var Overview 	= {restuarants: 17.0, groceries: 26.2, gas:8.9, pharmacies:4.0, furniture_building:7.8, elec_hobbies_clothing:15.5, general_misc:20.7, tooltip:"Overview",
+info1: "This is the average", info2: "spending across every", info3: "generation from 1925 to", info4: "the late 90's"}
+var Millenials  = {restuarants: 23.8, groceries: 21.7, gas:10.8,pharmacies:3.0, furniture_building:4.5, elec_hobbies_clothing:18.5, general_misc:17.7, tooltip:"Millenials",
+info1: "Millenials spend the", info2: "most on gas, eating out, ", info3: "and the hobbies/etc. sector", info4: "These are all non essential sections"}
+var Genx 		= {restuarants: 17.7, groceries: 25.3, gas:9.7, pharmacies:2.9, furniture_building:7.3, elec_hobbies_clothing:16.8, general_misc:20.3, tooltip:"Gen X",
+info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
+var BB 			= {restuarants: 13.5, groceries: 27.2, gas:8.5, pharmacies:3.7, furniture_building:10.0, elec_hobbies_clothing:14.7, general_misc:22.3, tooltip:"Baby Boomers",
+info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
+var Trad 		= {restuarants: 12.8, groceries: 30.4, gas:6.7, pharmacies:6.4, furniture_building:9.4, elec_hobbies_clothing:11.8, general_misc:22.5, tooltip:"Traditionalists",
+info1: "yes", info2: "yes", info3: "yes", info4: "yes"}
 
 // set the color scale
 var color = d3.scaleOrdinal()
@@ -113,15 +118,46 @@ function update(data) {
     d3.select("#elec").remove()
     d3.select("#misc").remove()
     d3.select("#pharmacies").remove()
+    d3.select("#infop1").remove()
+    d3.select("#infop2").remove()
+    d3.select("#infop3").remove()
+    d3.select("#infop4").remove()
     
     
     
 	svg.append("text")
-        .text(data.tooltip)
+        .text(data.tooltip + ": ")
         .attr("id","title")
         .attr("x", 250)
         .attr("y", 60)
         .attr("fill", "black");
+    svg.append("text")
+        .text(data.info1)
+        .attr("id","infop1")
+        .attr("x", 230)
+        .attr("y", 80)
+        .attr("fill", "black");
+    svg.append("text")
+        .text(data.info2)
+        .attr("id","infop2")
+        .attr("x", 210)
+        .attr("y", 100)
+        .attr("fill", "black");
+    svg.append("text")
+        .text(data.info3)
+        .attr("id","infop3")
+        .attr("x", 195)
+        .attr("y", 120)
+        .attr("fill", "black");
+    svg.append("text")
+        .text(data.info4)
+        .attr("id","infop4")
+        .attr("x", 180)
+        .attr("y", 140)
+        .attr("fill", "black");
+    
+    
+        
  
         
     svg.append("text")
@@ -151,7 +187,7 @@ function update(data) {
     svg.append("text")
         .text("Building/Furniture: " + data.furniture_building + "%")
         .attr("id","rent")
-        .attr("x", 220)
+        .attr("x", 210)
         .attr("y", -70)
         .attr("fill", "pink");
     svg.append("text")
@@ -161,7 +197,7 @@ function update(data) {
         .attr("y", -200)
         .attr("fill", "brown");
     svg.append("text")
-        .text("Misc." + data.general_misc + "%")
+        .text("Misc. " + data.general_misc + "%")
         .attr("id","misc")
         .attr("x", 130)
         .attr("y", 200)
