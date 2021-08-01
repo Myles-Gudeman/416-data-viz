@@ -8,17 +8,21 @@
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
 <!-- Add 2 buttons -->
-<button onclick="update(data1)">Data 1</button>
-<button onclick="update(data2)">Data 2</button>
+<button onclick="update(Overview)">Overview</button>
+<button onclick="update(Millenials)">Millenials</button>
+<button onclick="update(Genx)">Generation X</button>
+<button onclick="update(BB)">Baby Boomers</button>
+<button onclick="update(Trad)">Traditionalists</button>
+
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
 <body>
 
-<h1>Birds vs Planes, Aviations Feathered Flight Risks Analyzed.</h1>
+<h1>Why can't Millenials afford to buy a house?</h1>
 
-<p>Flying a plane can be extremely unnerving for some. While daily tasks like driving to work carry much more risk, the act of flying in a plane cause some passengers to worry more than they should. While bird strikes don't even fall into the National Transportation Safety Boards Top 10 causes for aviation accidents, they stil strike fear into some. This journey will vizualise what bird related risks you are taking on when you fly. </p>
+<p>A common claim these days is that due to aggressive real estate investing from older generations, Millenials are now priced out of the housing market and cannot afford to purchase. This locks them into a permanent renting situation in which wealth is consistently siphoned out of our generation and into older generations who now own these properties. While there has been a distinct increase in sentiment towards real estate as a form of investment which causes a housing market price increase, many people within such generations claim that the reason millenials can't afford housing is their spending habits. This journey aims to analyze generational spending habits and compare the differences in 'frivilous' spending vs. spending necessary in todays society. </p>
 
 <h2>Instructions:</h2>
 
@@ -46,9 +50,12 @@ var svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// create 2 data_set
-var data1 = {a: 9, b: 20, c:30, d:8, e:12}
-var data2 = {a: 6, b: 16, c:20, d:14, e:19, f:12}
+// a = restuarants, b = groceries, c = gas, d = pharmacies, e = furniture/building, f = elec/hobbies/clothing, g = general/misc
+var Overview 	= {a: 17.0, b: 26.2, c:8.9, d:4.0, e:7.8, f:15.5, g:20.7}
+var Millenials  = {a: 23.8, b: 21.7, c:10.8, d:3.0, e:4.5, f:18.5, g:17.7}
+var Genx 		= {a: 17.7, b: 25.3, c:9.7, d:2.9, e:7.3, f:16.8, g:20.3}
+var BB 			= {a: 13.5, b: 27.2, c:8.5, d:3.7, e:10.0, f:14.7, g:22.3}
+var Trad 		= {a: 12.8, b: 30.4, c:6.7, d:6.4, e:9.4, f:11.8, g:22.5}
 
 // set the color scale
 var color = d3.scaleOrdinal()
@@ -115,6 +122,6 @@ function update(data) {
 }
 
 // Initialize the plot with the first dataset
-update(data1)
+update(Overview)
 
 </script>
