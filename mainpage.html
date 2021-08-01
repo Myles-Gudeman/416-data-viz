@@ -64,8 +64,6 @@
 
 <script>
 
-
-// set the dimensions and margins of the graph
 var width = 750
     height = 450
     margin = 10
@@ -91,25 +89,22 @@ info1: "Boomers start to see", info2: "increases in grocery and", info3: "house 
 var Trad 		= {restuarants: 12.8, groceries: 30.4, gas:6.7, pharmacies:6.4, furniture_building:9.4, elec_hobbies_clothing:11.8, general_misc:22.5, tooltip:"Traditionalists",
 info1: "Traditionalists in their", info2: "old age spend the most", info3: "on pharmacy and groceries", info4: "which makes sense for retirees"}
 
-// set the color scale
+
 var color = d3.scaleOrdinal()
   .domain(["restuarants", "groceries", "gas", "pharmacies", "furniture-building", "elec-hobbies-clothing", "general_misc"])
   .range(d3.schemeTableau10);
 
-// A function that create / update the plot for a given variable:
 function update(data) {
 
-  // Compute the position of each group on the pie:
   var pie = d3.pie()
     .value(function(d) {return d.value; })
-    .sort(function(a, b) { console.log(a) ; return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
+    .sort(function(a, b) { console.log(a) ; return d3.ascending(a.key, b.key);} ) 
  
  
  var data_ready = pie(d3.entries(data))
   
-  var u = svg.selectAll("g.slice").data(data_ready)
+  var u = svg.selectAll("path").data(data_ready)
 
-  // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
   u
     .enter()
     .append('path')
@@ -118,12 +113,8 @@ function update(data) {
     .duration(1000)
     .attr('d', d3.arc()
       .innerRadius(0)
-      .outerRadius(radius)
-    
+      .outerRadius(radius))
       
-  
-      
-    )
     .attr('fill', function(d){ return(color(d.data.key)) })
     .attr("stroke", "white")
     .style("stroke-width", "2px")
