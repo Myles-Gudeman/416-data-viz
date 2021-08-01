@@ -15,7 +15,6 @@
 <button onclick="update(Trad)">Traditionalists</button>
 
 
-<!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
 <body>
@@ -50,17 +49,17 @@ var svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// a = restuarants, b = groceries, c = gas, d = pharmacies, e = furniture/building, f = elec/hobbies/clothing, g = general/misc
-var Overview 	= {a: 17.0, b: 26.2, c:8.9, d:4.0, e:7.8, f:15.5, g:20.7}
-var Millenials  = {a: 23.8, b: 21.7, c:10.8, d:3.0, e:4.5, f:18.5, g:17.7}
-var Genx 		= {a: 17.7, b: 25.3, c:9.7, d:2.9, e:7.3, f:16.8, g:20.3}
-var BB 			= {a: 13.5, b: 27.2, c:8.5, d:3.7, e:10.0, f:14.7, g:22.3}
-var Trad 		= {a: 12.8, b: 30.4, c:6.7, d:6.4, e:9.4, f:11.8, g:22.5}
+// a = restuarants, b = groceries, c = gas, d = pharmacies, e = furniture_building, f = elec_hobbies_clothing, g = general_misc
+var Overview 	= {restuarants: 17.0, groceries: 26.2, gas:8.9, pharmacies:4.0, furniture_building:7.8, elec_hobbies_clothing:15.5, general_misc:20.7}
+var Millenials  = {restuarants: 23.8, groceries: 21.7, gas:10.8,pharmacies:3.0, furniture_building:4.5, elec_hobbies_clothing:18.5, general_misc:17.7}
+var Genx 		= {restuarants: 17.7, groceries: 25.3, gas:9.7, pharmacies:2.9, furniture_building:7.3, elec_hobbies_clothing:16.8, general_misc:20.3}
+var BB 			= {restuarants: 13.5, groceries: 27.2, gas:8.5, pharmacies:3.7, furniture_building:10.0, elec_hobbies_clothing:14.7, general_misc:22.3}
+var Trad 		= {restuarants: 12.8, groceries: 30.4, gas:6.7, pharmacies:6.4, furniture_building:9.4, elec_hobbies_clothing:11.8, general_misc:22.5}
 
 // set the color scale
 var color = d3.scaleOrdinal()
-  .domain(["a", "b", "c", "d", "e", "f"])
-  .range(d3.schemeDark2);
+  .domain(["restuarants", "groceries", "gas", "pharmacies", "furniture_building", "elec_hobbies_clothing", "general_misc"])
+  .range(d3.schemeTableau10);
 
 // A function that create / update the plot for a given variable:
 function update(data) {
@@ -69,17 +68,10 @@ function update(data) {
   var pie = d3.pie()
     .value(function(d) {return d.value; })
     .sort(function(a, b) { console.log(a) ; return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
-  var data_ready = pie(d3.entries(data))
-  
-  //-----------
-  var arcGenerator = d3.arc()
-  .innerRadius(0)
-  .outerRadius(radius)
-  
-  
-  // map to data
-  var u = svg.selectAll("path")
-    .data(data_ready)
+ 
+ 
+ var data_ready = pie(d3.entries(data))
+  var u = svg.selectAll("path").data(data_ready)
 
   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
   u
@@ -96,32 +88,14 @@ function update(data) {
     .attr("stroke", "white")
     .style("stroke-width", "2px")
     .style("opacity", 1)
-    
-    
-    //------------
-    u
-    .selectAll('mySlices')
-    .data(data_ready)
-    .enter()
-    .append('text')
-    .text(function(d){ return "grp " + d.data.key})
-    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-    .style("text-anchor", "middle")
-    .style("font-size", 17)
-    
-    
-  // remove the group that is not present anymore
-  u
-    .exit()
-    .remove()
-   
-    
+       
 
+  u.exit().remove()
+   
 
 
 }
 
-// Initialize the plot with the first dataset
 update(Overview)
 
 </script>
